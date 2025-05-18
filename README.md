@@ -26,7 +26,7 @@ Requires [Python](https://www.python.org/downloads/) and [CUDA Toolkit](https://
 wget -qO- https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz | tar xzvf -
 ```
 
-3. Parallelize [Line 122-124](/blob/master/CNTK.py#L122) in [CNTK.py](/blob/master/CNTK.py) according to your specific computing environment to utilize multiple GPUs
+3. Parallelize [Line 122-124](/CNTK.py#L122) in [CNTK.py](/CNTK.py) according to your specific computing environment to utilize multiple GPUs
 
 ### Reproduce Results (Paper Table 1)
 
