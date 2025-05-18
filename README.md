@@ -1,41 +1,47 @@
 # Convolutional Neural Tangent Kernel (CNTK)
 
-This repository contains the code for Convolutional Neural Tangent Kernel (CNTK) in the following paper 
+This repository contains the code for Convolutional Neural Tangent Kernel (CNTK) in the following paper
 
 [On Exact Computation with an Infinitely Wide Neural Net](https://arxiv.org/abs/1904.11955) (NeurIPS 2019)
 
 ### Citation
 
-	@inproceedings{arora2019exact,
-	  title={On exact computation with an infinitely wide neural net},
-	  author={Arora, Sanjeev and Du, Simon S. and Hu, Wei and Li, Zhiyuan and Salakhutdinov, Ruslan and Wang, Ruosong},
-	  booktitle={Thirty-third Conference on Neural Information Processing Systems},
-	  year={2019}
-	}
-	
+```bib
+@inproceedings{arora2019exact,
+  title={On exact computation with an infinitely wide neural net},
+  author={Arora, Sanjeev and Du, Simon S. and Hu, Wei and Li, Zhiyuan and Salakhutdinov, Ruslan and Wang, Ruosong},
+  booktitle={Thirty-third Conference on Neural Information Processing Systems},
+  year={2019}
+}
+```
+
 ## Usage
-Require Python 2.7 and CUDA.
 
-1. Install [CuPy](https://cupy.chainer.org).
-2. Download CIFAR-10.
-```
-wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz; tar zxvf cifar-10-python.tar.gz
-```
-3. Parallelize [Line 143-146](https://github.com/ruosongwang/CNTK/blob/f6152dab94dfc7abb84cba8eb346366d8c39c0f0/CNTK.py#L143) in [CNTK.py](https://github.com/ruosongwang/CNTK/blob/master/CNTK.py) according to your specific computing enviroment to utilize multiple GPUs. 
+Requires [Python](https://www.python.org/downloads/) and [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)
 
-To reproduce results in Table 1 in our paper:
+1. Install [CuPy](https://docs.cupy.dev/en/stable/install.html), [SciPy](https://scipy.org/install/) and [tqdm](https://github.com/tqdm/tqdm#installation)
+2. Download CIFAR-10
+
+```sh
+wget -qO- https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz | tar xzvf -
+```
+
+3. Parallelize [Line 122-124](/CNTK.py#L122) in [CNTK.py](/CNTK.py) according to your specific computing environment to utilize multiple GPUs
+
+### Reproduce Results (Paper Table 1)
 
 For column CNTK-V:
 
+```sh
+python CNTK.py --gap no --fix no --depth <depth>
 ```
-python CNTK.py --gap no --fix no --depth DEPTH
-```
-where DEPTH is 3, 4, 6, 11 or 21.
+
+> *where \<depth\> is 3, 4, 6, 11 or 21*
 
 For column CNTK-GAP:
 
+```sh
+python CNTK.py --gap yes --fix yes --depth <depth>
 ```
-python CNTK.py --gap yes --fix yes --depth DEPTH
-```
-where DEPTH is 3, 4, 6, 11 or 21.
 
+> *where \<depth\> is 3, 4, 6, 11 or 21*
